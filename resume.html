@@ -1,201 +1,261 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <title>個人履歷 | 亞洲大學</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", "Noto Sans TC", sans-serif;
-        }
+<title>Sergey Fetisov Resume</title>
 
-        body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #333;
-        }
+<style>
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Noto Sans TC",sans-serif;
+}
 
-        header {
-            background: #2a5298;
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
+body{
+background:#f4f6fb;
+transition:0.3s;
+}
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+.dark{
+background:#121212;
+color:white;
+}
 
-        header p {
-            opacity: 0.9;
-        }
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
 
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-        }
+header{
+display:flex;
+align-items:center;
+gap:30px;
+margin-bottom:40px;
+}
 
-        .left {
-            background: #f4f6fb;
-            padding: 30px;
-        }
+.profile{
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #2a5298;
+}
 
-        .right {
-            padding: 30px;
-        }
+.name{
+font-size:32px;
+font-weight:bold;
+}
 
-        h2 {
-            margin-bottom: 15px;
-            color: #2a5298;
-            border-bottom: 2px solid #2a5298;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
+.subtitle{
+color:gray;
+margin-top:5px;
+}
 
-        ul {
-            list-style: none;
-            margin-top: 10px;
-        }
+.dark .subtitle{
+color:#ccc;
+}
 
-        ul li {
-            margin-bottom: 10px;
-        }
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
 
-        .skill-bar {
-            background: #ddd;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
+.dark .card{
+background:#1e1e1e;
+}
 
-        .skill-bar div {
-            height: 12px;
-            background: #2a5298;
-            width: 0;
-            transition: width 1.5s ease;
-        }
+h2{
+margin-bottom:15px;
+color:#2a5298;
+}
 
-        .btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #2a5298;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.dark h2{
+color:#4ea3ff;
+}
 
-        .btn:hover {
-            background: #1e3c72;
-        }
+.skills{
+margin-top:10px;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #f4f6fb;
-            font-size: 14px;
-        }
+.skill{
+margin-bottom:15px;
+}
 
-        @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.bar{
+height:10px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar div{
+height:100%;
+width:0;
+background:#2a5298;
+transition:1.5s;
+}
+
+.portfolio{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.work{
+background:#eee;
+padding:40px;
+text-align:center;
+border-radius:10px;
+}
+
+.dark .work{
+background:#333;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#2a5298;
+color:white;
+border-radius:20px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+opacity:0.8;
+}
+
+footer{
+text-align:center;
+margin-top:30px;
+color:gray;
+}
+
+.dark footer{
+color:#aaa;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <header>
-        <h1>Sergey Fetisov</h1>
-        <p>亞洲大學學生 | 學號 AU114054040</p>
-    </header>
+<header>
 
-    <div class="content">
-        <div class="left">
-            <h2>聯絡資訊</h2>
-            <ul>
-                <li>📍 台灣</li>
-                <li>📧 yourmail@email.com</li>
-                <li>📱 09xx-xxx-xxx</li>
-            </ul>
+<img src="images/photo.jpg" class="profile">
 
-            <h2 style="margin-top:30px;">技能</h2>
+<div>
+<div class="name">Sergey Fetisov</div>
+<div class="subtitle">亞洲大學學生 | AU114054040</div>
 
-            <p>HTML</p>
-            <div class="skill-bar"><div data-skill="90%"></div></div>
+<button onclick="toggleDark()">切換深色模式</button>
+</div>
 
-            <p>CSS</p>
-            <div class="skill-bar"><div data-skill="85%"></div></div>
+</header>
 
-            <p>JavaScript</p>
-            <div class="skill-bar"><div data-skill="75%"></div></div>
+<div class="card">
 
-            <p>設計能力</p>
-            <div class="skill-bar"><div data-skill="80%"></div></div>
+<h2>關於我</h2>
 
-        </div>
+<p>
+我是亞洲大學的學生，對設計與數位技術充滿興趣，
+擅長將創意與技術結合。希望未來能在設計與科技領域
+持續探索與發展。
+</p>
 
-        <div class="right">
-            <h2>關於我</h2>
-            <p style="margin-top:10px; line-height:1.6;">
-                我是亞洲大學的學生，具備良好的學習能力與團隊合作精神，
-                對於設計與數位技術領域充滿熱情。
-                希望能在未來持續精進專業能力，並將創意與技術結合，
-                創造具有影響力的作品。
-            </p>
+</div>
 
-            <h2 style="margin-top:30px;">學歷</h2>
-            <ul>
-                <li><strong>亞洲大學</strong> | 就讀中</li>
-            </ul>
+<div class="card">
 
-            <h2 style="margin-top:30px;">經歷</h2>
-            <ul>
-                <li>• 校內專題製作</li>
-                <li>• 團隊合作專案經驗</li>
-                <li>• 設計相關實作作品</li>
-            </ul>
+<h2>技能</h2>
 
-            <button class="btn" onclick="downloadResume()">下載履歷PDF</button>
-        </div>
-    </div>
+<div class="skills">
 
-    <footer>
-        © 2026 亞洲大學學生履歷 | AU114054040
-    </footer>
+<div class="skill">
+HTML
+<div class="bar"><div data-skill="90%"></div></div>
+</div>
+
+<div class="skill">
+CSS
+<div class="bar"><div data-skill="85%"></div></div>
+</div>
+
+<div class="skill">
+JavaScript
+<div class="bar"><div data-skill="75%"></div></div>
+</div>
+
+<div class="skill">
+Design
+<div class="bar"><div data-skill="80%"></div></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>學歷</h2>
+
+<p>
+亞洲大學  
+Asia University  
+目前就讀中
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>作品集</h2>
+
+<div class="portfolio">
+
+<div class="work">作品 1</div>
+<div class="work">作品 2</div>
+<div class="work">作品 3</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Sergey Fetisov Resume
+
+</footer>
 
 </div>
 
 <script>
-    // 技能條動畫
-    window.onload = function() {
-        const skills = document.querySelectorAll(".skill-bar div");
-        skills.forEach(skill => {
-            skill.style.width = skill.getAttribute("data-skill");
-        });
-    }
 
-    // 假下載功能示意
-    function downloadResume() {
-        alert("這裡可以串接 PDF 下載功能！");
-    }
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+window.onload=function(){
+
+let skills=document.querySelectorAll(".bar div");
+
+skills.forEach(function(skill){
+skill.style.width=skill.dataset.skill;
+})
+
+}
+
 </script>
 
 </body>
