@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>個人履歷 | 亞洲大學</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        header {
+            background: #2a5298;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .left {
+            background: #f4f6fb;
+            padding: 30px;
+        }
+
+        .right {
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #2a5298;
+            border-bottom: 2px solid #2a5298;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .skill-bar div {
+            height: 12px;
+            background: #2a5298;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1e3c72;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #f4f6fb;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Sergey Fetisov</h1>
+        <p>亞洲大學學生 | 學號 AU114054040</p>
+    </header>
+
+    <div class="content">
+        <div class="left">
+            <h2>聯絡資訊</h2>
+            <ul>
+                <li>📍 台灣</li>
+                <li>📧 yourmail@email.com</li>
+                <li>📱 09xx-xxx-xxx</li>
+            </ul>
+
+            <h2 style="margin-top:30px;">技能</h2>
+
+            <p>HTML</p>
+            <div class="skill-bar"><div data-skill="90%"></div></div>
+
+            <p>CSS</p>
+            <div class="skill-bar"><div data-skill="85%"></div></div>
+
+            <p>JavaScript</p>
+            <div class="skill-bar"><div data-skill="75%"></div></div>
+
+            <p>設計能力</p>
+            <div class="skill-bar"><div data-skill="80%"></div></div>
+
+        </div>
+
+        <div class="right">
+            <h2>關於我</h2>
+            <p style="margin-top:10px; line-height:1.6;">
+                我是亞洲大學的學生，具備良好的學習能力與團隊合作精神，
+                對於設計與數位技術領域充滿熱情。
+                希望能在未來持續精進專業能力，並將創意與技術結合，
+                創造具有影響力的作品。
+            </p>
+
+            <h2 style="margin-top:30px;">學歷</h2>
+            <ul>
+                <li><strong>亞洲大學</strong> | 就讀中</li>
+            </ul>
+
+            <h2 style="margin-top:30px;">經歷</h2>
+            <ul>
+                <li>• 校內專題製作</li>
+                <li>• 團隊合作專案經驗</li>
+                <li>• 設計相關實作作品</li>
+            </ul>
+
+            <button class="btn" onclick="downloadResume()">下載履歷PDF</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 亞洲大學學生履歷 | AU114054040
+    </footer>
+
+</div>
+
+<script>
+    // 技能條動畫
+    window.onload = function() {
+        const skills = document.querySelectorAll(".skill-bar div");
+        skills.forEach(skill => {
+            skill.style.width = skill.getAttribute("data-skill");
+        });
+    }
+
+    // 假下載功能示意
+    function downloadResume() {
+        alert("這裡可以串接 PDF 下載功能！");
+    }
+</script>
+
+</body>
+</html>
