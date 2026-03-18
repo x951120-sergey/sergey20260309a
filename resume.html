@@ -17,7 +17,7 @@ font-family:"Noto Sans TC",sans-serif;
 
 body{
 background:#f4f6fb;
-transition:0.3s;
+transition:0.4s;
 }
 
 .dark{
@@ -25,10 +25,19 @@ background:#121212;
 color:white;
 }
 
+audio{
+position:fixed;
+top:20px;
+right:20px;
+width:250px;
+z-index:1000;
+}
+
 .container{
 max-width:1100px;
 margin:auto;
 padding:40px 20px;
+animation:fadeIn 1s ease;
 }
 
 header{
@@ -66,6 +75,11 @@ padding:25px;
 border-radius:15px;
 margin-bottom:25px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .dark .card{
@@ -114,6 +128,11 @@ background:#eee;
 padding:40px;
 text-align:center;
 border-radius:10px;
+transition:0.3s;
+}
+
+.work:hover{
+transform:scale(1.05);
 }
 
 .dark .work{
@@ -144,10 +163,25 @@ color:gray;
 color:#aaa;
 }
 
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
 </head>
 
 <body>
+
+<audio controls loop>
+  <source src="./music/bgm.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
 
@@ -165,19 +199,14 @@ color:#aaa;
 </header>
 
 <div class="card">
-
 <h2>關於我</h2>
-
 <p>
 我是亞洲大學的學生，對設計與數位技術充滿興趣，
-擅長將創意與技術結合。希望未來能在設計與科技領域
-持續探索與發展。
+擅長將創意與技術結合，希望未來能在設計與科技領域持續探索與發展。
 </p>
-
 </div>
 
 <div class="card">
-
 <h2>技能</h2>
 
 <div class="skills">
@@ -203,39 +232,30 @@ Design
 </div>
 
 </div>
-
 </div>
 
 <div class="card">
-
 <h2>學歷</h2>
-
 <p>
 亞洲大學  
 Asia University  
 目前就讀中
 </p>
-
 </div>
 
 <div class="card">
-
 <h2>作品集</h2>
 
 <div class="portfolio">
-
 <div class="work">作品 1</div>
 <div class="work">作品 2</div>
 <div class="work">作品 3</div>
-
 </div>
 
 </div>
 
 <footer>
-
 © 2026 Sergey Fetisov Resume
-
 </footer>
 
 </div>
