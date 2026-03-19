@@ -1,282 +1,254 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergey's Flotropica Empire 👑</title>
 
-<title>Sergey Fetisov Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Modak&family=Noto+Sans+TC:wght@700&display=swap');
 
-<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Noto Sans TC",sans-serif;
-}
+        body {
+            background: url('images/flotropica.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Noto Sans TC', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>🖕</text></svg>"), auto;
+        }
 
-body{
-background:#f4f6fb;
-transition:0.4s;
-}
+        audio {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 3000;
+        }
 
-.dark{
-background:#121212;
-color:white;
-}
+        .guardian {
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
 
-audio{
-position:fixed;
-top:20px;
-right:20px;
-width:250px;
-z-index:1000;
-}
+        .g-lt {
+            top: 20px;
+            left: 20px;
+            width: 130px;
+            height: 130px;
+            background-image: url('images/jiafei_rb.png');
+            animation: float 3s infinite ease-in-out;
+        }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-animation:fadeIn 1s ease;
-}
+        .g-rt {
+            top: 20px;
+            right: 20px;
+            width: 140px;
+            height: 140px;
+            background-image: url('images/lashes_rb.png');
+            animation: float 4s infinite ease-in-out;
+        }
 
-header{
-display:flex;
-align-items:center;
-gap:30px;
-margin-bottom:40px;
-}
+        .g-lb {
+            bottom: 20px;
+            left: 20px;
+            width: 150px;
+            height: 150px;
+            background-image: url('images/avocado_rb.png');
+            animation: float 5s infinite ease-in-out reverse;
+        }
 
-.profile{
-width:160px;
-height:160px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #2a5298;
-}
+        body::after {
+            content: "";
+            background: url('images/jiafei.png') no-repeat;
+            background-size: contain;
+            width: 180px;
+            height: 180px;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1001;
+            animation: rotate-float 4s infinite ease-in-out;
+            pointer-events: none;
+        }
 
-.name{
-font-size:32px;
-font-weight:bold;
-}
+        @keyframes float {
+            0%,100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-20px) rotate(-5deg) scale(1.1); }
+        }
 
-.subtitle{
-color:gray;
-margin-top:5px;
-}
+        @keyframes rotate-float {
+            0%,100% { transform: rotate(-5deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
 
-.dark .subtitle{
-color:#ccc;
-}
+        .container {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
 
-.card{
-background:white;
-padding:25px;
-border-radius:15px;
-margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-transition:0.3s;
-}
+        .y2k-frame {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px);
+            border: 10px dotted #FF00FF;
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(255,0,255,0.4);
+            text-align: center;
+        }
 
-.card:hover{
-transform:translateY(-5px);
-}
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 8px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 0 25px #FFD700;
+            margin-bottom: 20px;
+        }
 
-.dark .card{
-background:#1e1e1e;
-}
+        h1 {
+            font-family: 'Modak', cursive;
+            font-size: 55px;
+            color: #FF00FF;
+            text-shadow: 4px 4px 0 #00FFFF;
+        }
 
-h2{
-margin-bottom:15px;
-color:#2a5298;
-}
+        .card {
+            background: rgba(255,255,255,0.8);
+            border: 3px solid #333;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: left;
+            box-shadow: 10px 10px 0 #333;
+        }
 
-.dark h2{
-color:#4ea3ff;
-}
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 4px solid #FF00FF;
+            margin-top: 15px;
+        }
 
-.skills{
-margin-top:10px;
-}
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-.skill{
-margin-bottom:15px;
-}
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
 
-.bar{
-height:10px;
-background:#ddd;
-border-radius:20px;
-overflow:hidden;
-}
+        .baddie-icon {
+            width: 45px;
+            height: 45px;
+            background: url('images/baddie.png') no-repeat center;
+            background-size: contain;
+        }
 
-.bar div{
-height:100%;
-width:0;
-background:#2a5298;
-transition:1.5s;
-}
+        .bar-bg {
+            flex-grow: 1;
+            height: 25px;
+            background: #eee;
+            border-radius: 15px;
+            border: 2px solid #333;
+            overflow: hidden;
+        }
 
-.portfolio{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg,#FF69B4,#FFD700);
+        }
 
-.work{
-background:#eee;
-padding:40px;
-text-align:center;
-border-radius:10px;
-transition:0.3s;
-}
-
-.work:hover{
-transform:scale(1.05);
-}
-
-.dark .work{
-background:#333;
-}
-
-button{
-padding:10px 20px;
-border:none;
-background:#2a5298;
-color:white;
-border-radius:20px;
-cursor:pointer;
-margin-top:10px;
-}
-
-button:hover{
-opacity:0.8;
-}
-
-footer{
-text-align:center;
-margin-top:30px;
-color:gray;
-}
-
-.dark footer{
-color:#aaa;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
+        .yes-btn {
+            display: block;
+            width: 220px;
+            height: 80px;
+            margin: 40px auto;
+            background: url('images/yes.png') no-repeat center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
 
-<audio controls loop>
-  <source src="./music/bgm.mp3" type="audio/mpeg">
+<audio autoplay loop controls>
+    <source src="music/bgm.mp3" type="audio/mpeg">
 </audio>
 
+<div class="guardian g-lt"></div>
+<div class="guardian g-rt"></div>
+<div class="guardian g-lb"></div>
+
 <div class="container">
+    <div class="y2k-frame">
 
-<header>
+        <img src="images/1000022247.jpg" class="profile-img" alt="Sergey">
 
-<img src="images/photo.jpg" class="profile">
+        <h1>SERGEY FETISOV</h1>
 
-<div>
-<div class="name">Sergey Fetisov</div>
-<div class="subtitle">亞洲大學學生 | AU114054040</div>
+        <p>🌟 <b>學號:20440672 . 亞洲大學 一年級</b> 🌟</p>
 
-<button onclick="toggleDark()">切換深色模式</button>
+        <div class="card">
+            <h2>👑 皇室自介影片</h2>
+
+            <div class="video-container">
+                <iframe 
+                  src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc?rel=0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>皇室簡介</h2>
+            <p>我是亞洲大學一年級學生(學號:114054040)不要問我在學什麼，問我有沒有被 Jiafei 祝福過。💅</p>
+        </div>
+
+        <div class="card">
+            <h2>核心神技</h2>
+
+            <div class="skill-item">
+                <div class="baddie-icon"></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+                <span>精緻 100%</span>
+            </div>
+
+            <div class="skill-item">
+                <div class="baddie-icon"></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+                <span>SLAY 95%</span>
+            </div>
+        </div>
+
+        <button class="yes-btn" onclick="alert('恭喜你，Flotropica 帝國正式錄取你！✨🖕')"></button>
+
+        <footer>© 2026 Designed by Sergey Fetisov.</footer>
+
+    </div>
 </div>
-
-</header>
-
-<div class="card">
-<h2>關於我</h2>
-<p>
-我是亞洲大學的學生，對設計與數位技術充滿興趣，
-擅長將創意與技術結合，希望未來能在設計與科技領域持續探索與發展。
-</p>
-</div>
-
-<div class="card">
-<h2>技能</h2>
-
-<div class="skills">
-
-<div class="skill">
-HTML
-<div class="bar"><div data-skill="90%"></div></div>
-</div>
-
-<div class="skill">
-CSS
-<div class="bar"><div data-skill="85%"></div></div>
-</div>
-
-<div class="skill">
-JavaScript
-<div class="bar"><div data-skill="75%"></div></div>
-</div>
-
-<div class="skill">
-Design
-<div class="bar"><div data-skill="80%"></div></div>
-</div>
-
-</div>
-</div>
-
-<div class="card">
-<h2>學歷</h2>
-<p>
-亞洲大學  
-Asia University  
-目前就讀中
-</p>
-</div>
-
-<div class="card">
-<h2>作品集</h2>
-
-<div class="portfolio">
-<div class="work">作品 1</div>
-<div class="work">作品 2</div>
-<div class="work">作品 3</div>
-</div>
-
-</div>
-
-<footer>
-© 2026 Sergey Fetisov Resume
-</footer>
-
-</div>
-
-<script>
-
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
-
-window.onload=function(){
-
-let skills=document.querySelectorAll(".bar div");
-
-skills.forEach(function(skill){
-skill.style.width=skill.dataset.skill;
-})
-
-}
-
-</script>
 
 </body>
 </html>
