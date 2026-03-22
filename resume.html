@@ -103,6 +103,26 @@
             text-align: center;
         }
 
+        .flip-card {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-inner {
+            transform: rotateY(180deg);
+        }
+
         .profile-img {
             width: 220px;
             height: 220px;
@@ -110,7 +130,12 @@
             border: 8px solid #FFD700;
             object-fit: cover;
             box-shadow: 0 0 25px #FFD700;
-            margin-bottom: 20px;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        .back {
+            transform: rotateY(180deg);
         }
 
         h1 {
@@ -142,8 +167,6 @@
 
         .video-container iframe {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
         }
@@ -201,11 +224,16 @@
 <div class="container">
     <div class="y2k-frame">
 
-        <img src="images/1000022247.jpg" class="profile-img" alt="Sergey">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-inner">
+                <img src="images/1000022247.jpg" class="profile-img front" alt="front">
+                <img src="images/second.jpg" class="profile-img back" alt="back">
+            </div>
+        </div>
 
         <h1>SERGEY FETISOV</h1>
 
-        <p>🌟 <b>學號:20440672 . 亞洲大學 一年級</b> 🌟</p>
+        <p>🌟 <b>學號:114054040 . 亞洲大學 一年級</b> 🌟</p>
 
         <div class="card">
             <h2>👑 皇室自介影片</h2>
@@ -215,8 +243,6 @@
                   src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc?rel=0"
                   title="YouTube video player"
                   frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen>
                 </iframe>
             </div>
@@ -249,6 +275,28 @@
 
     </div>
 </div>
+
+<script>
+setInterval(() => {
+    const diamond = document.createElement('div');
+    diamond.innerText = '💎';
+    diamond.style.position = 'fixed';
+    diamond.style.left = Math.random() * window.innerWidth + 'px';
+    diamond.style.top = '-30px';
+    diamond.style.fontSize = '24px';
+    diamond.style.zIndex = '9999';
+    diamond.style.transition = 'transform 5s linear, opacity 5s linear';
+
+    document.body.appendChild(diamond);
+
+    requestAnimationFrame(() => {
+        diamond.style.transform = `translateY(${window.innerHeight + 50}px) rotate(360deg)`;
+        diamond.style.opacity = '0';
+    });
+
+    setTimeout(() => diamond.remove(), 5000);
+}, 300);
+</script>
 
 </body>
 </html>
