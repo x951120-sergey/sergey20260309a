@@ -237,6 +237,42 @@ setInterval(()=>{
     setTimeout(()=>d.remove(),5000);
 },300);
 </script>
+<script>
+// === 💥 中指流沙特效（升級版） ===
+document.addEventListener('mousedown', function(e) {
+    const symbols = ['🖕', '💅', '✨', '💖', '💎'];
 
+    for (let i = 0; i < 12; i++) {
+        const p = document.createElement('div');
+        p.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+        p.style.position = 'fixed';
+        p.style.left = e.clientX + 'px';
+        p.style.top = e.clientY + 'px';
+        p.style.fontSize = (Math.random() * 10 + 20) + 'px';
+        p.style.pointerEvents = 'none';
+        p.style.zIndex = '9999';
+        p.style.transition = 'transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s ease';
+
+        document.body.appendChild(p);
+
+        // 隨機方向噴射
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 200 + 80;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        const rotate = Math.random() * 720 - 360;
+
+        requestAnimationFrame(() => {
+            p.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(0)`;
+            p.style.opacity = '0';
+        });
+
+        setTimeout(() => p.remove(), 1200);
+    }
+});
+</script>
 </body>
 </html>
