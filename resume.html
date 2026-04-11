@@ -18,7 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 音樂播放器 */
+/* 音樂 */
 audio {
     position: fixed;
     bottom: 10px;
@@ -26,62 +26,52 @@ audio {
     z-index: 3000;
 }
 
-/* 頭像翻面 */
-.flip-card {
-    width:220px;
-    height:220px;
-    margin:0 auto 20px;
-    perspective:1000px;
-    cursor:pointer;
-}
-
-.flip-inner {
-    width:100%;
-    height:100%;
-    transition:0.8s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.flip-card.flipped .flip-inner {
-    transform: rotateY(180deg);
-}
-
+/* 頭像 */
 .profile-img {
     width:220px;
     height:220px;
     border-radius:50%;
     border:8px solid #FFD700;
-    position:absolute;
     object-fit:cover;
-    backface-visibility:hidden;
+    margin-bottom:20px;
+    cursor:pointer;
+    transition: transform 0.8s ease;
 }
 
-.back {
-    transform: rotateY(180deg);
+/* 自轉動畫 */
+.spin {
+    transform: rotateY(360deg) scale(1.1);
 }
 
 /* UI */
-.container { max-width:750px; margin:60px auto; }
+.container { max-width:750px; margin:60px auto; padding:20px; }
+
 .y2k-frame {
-    background:rgba(255,255,255,0.6);
-    padding:40px;
-    border-radius:50px;
-    text-align:center;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 10px dotted #FF00FF;
+    border-radius: 50px;
+    padding: 40px;
+    box-shadow: 0 0 50px rgba(255,0,255,0.4);
+    text-align: center;
 }
 
 h1 {
     font-family:'Modak';
     font-size:55px;
     color:#FF00FF;
+    text-shadow:4px 4px 0 #00FFFF;
 }
 
 /* 卡片 */
 .card {
-    background:white;
-    padding:20px;
-    margin:20px 0;
+    background: rgba(255,255,255,0.8);
+    border:3px solid #333;
     border-radius:20px;
+    padding:25px;
+    margin:20px 0;
+    text-align:left;
+    box-shadow:10px 10px 0 #333;
 }
 
 /* 影片 */
@@ -94,6 +84,47 @@ h1 {
     position:absolute;
     width:100%;
     height:100%;
+}
+
+/* 技能條 */
+.skill-item {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:15px 0;
+}
+
+.baddie-icon {
+    width:45px;
+    height:45px;
+    background:url('images/baddie.png') no-repeat center;
+    background-size:contain;
+}
+
+.bar-bg {
+    flex-grow:1;
+    height:25px;
+    background:#eee;
+    border-radius:15px;
+    border:2px solid #333;
+    overflow:hidden;
+}
+
+.bar-fill {
+    height:100%;
+    background:linear-gradient(90deg,#FF69B4,#FFD700);
+}
+
+/* 按鈕 */
+.yes-btn {
+    display:block;
+    width:220px;
+    height:80px;
+    margin:40px auto;
+    background:url('images/yes.png') no-repeat center;
+    background-size:contain;
+    border:none;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -108,34 +139,59 @@ h1 {
 <div class="container">
 <div class="y2k-frame">
 
-<!-- 翻面頭像 -->
-<div class="flip-card" id="flipCard">
-    <div class="flip-inner">
-        <img src="images/1000022247.jpg" class="profile-img">
-        <img src="images/second.jpg" class="profile-img back">
-    </div>
-</div>
+<!-- 🔥 自轉頭像 -->
+<img src="images/1000022247.jpg" class="profile-img" id="avatar">
 
 <h1>SERGEY FETISOV</h1>
+<p>🌟 <b>學號:114054040 . 亞洲大學 一年級</b> 🌟</p>
 
+<!-- 🎬 影片 -->
 <div class="card">
-<h2>👑 自介影片</h2>
-
+<h2>👑 皇室自介影片</h2>
 <div class="video-container">
 <iframe 
-src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc"
+src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc?rel=0"
 frameborder="0"
 allowfullscreen>
 </iframe>
 </div>
+</div>
+
+<!-- 📝 文字區（已恢復） -->
+<div class="card">
+<h2>皇室簡介</h2>
+<p>我是亞洲大學一年級學生QUEEN陳宥憲(學號:114054040)
+    很能裝，不要問我裝甚麼，我是巴離釋迦垃圾袋。
+    然後媽媽們能給我滿分嗎我不想被當。💅</p>
+</div>
+
+<!-- 💪 技能 -->
+<div class="card">
+<h2>核心神技</h2>
+
+<div class="skill-item">
+<div class="baddie-icon"></div>
+<div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+<span>精緻 4.87%</span>
+</div>
+
+<div class="skill-item">
+<div class="baddie-icon"></div>
+<div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+<span>SLAY 95%</span>
+</div>
 
 </div>
+
+<button class="yes-btn" onclick="alert('恭喜你，Flotropica 帝國正式收養你！✨🖕')"></button>
+
+<footer>© 2026 Designed by Sergey Fetisov.</footer>
 
 </div>
 </div>
 
 <script>
-// 🔥 點擊解鎖音樂
+// 🎵 音樂解鎖
 const audio = document.getElementById("bgm");
 
 document.addEventListener("click", () => {
@@ -143,16 +199,24 @@ document.addEventListener("click", () => {
     audio.play();
 }, { once:true });
 
+// 🔥 頭像自轉變身
+const avatar = document.getElementById("avatar");
+let flipped = false;
 
-// 🔥 頭像翻面
-document.getElementById("flipCard").onclick = function() {
-    this.classList.toggle("flipped");
+avatar.addEventListener("click", () => {
+    avatar.classList.add("spin");
 
-    // 同時啟動音樂
-    audio.muted = false;
-    audio.play();
-};
+    setTimeout(() => {
+        flipped = !flipped;
+        avatar.src = flipped
+            ? "images/second.jpg"
+            : "images/1000022247.jpg";
+    }, 400);
 
+    setTimeout(() => {
+        avatar.classList.remove("spin");
+    }, 800);
+});
 
 // 💎 鑽石雨
 setInterval(()=>{
@@ -172,7 +236,6 @@ setInterval(()=>{
 
     setTimeout(()=>d.remove(),5000);
 },300);
-
 </script>
 
 </body>
