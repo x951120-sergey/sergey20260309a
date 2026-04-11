@@ -1,301 +1,178 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sergey's Flotropica Empire 👑</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergey's Flotropica Empire 👑</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Modak&family=Noto+Sans+TC:wght@700&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Noto+Sans+TC:wght@700&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        body {
-            background: url('images/flotropica.png') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Noto Sans TC', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>🖕</text></svg>"), auto;
-        }
+body {
+    background: url('images/flotropica.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Noto Sans TC', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        audio {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            z-index: 3000;
-        }
+/* 音樂播放器 */
+audio {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3000;
+}
 
-        .guardian {
-            position: fixed;
-            z-index: 1000;
-            pointer-events: none;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
+/* 頭像翻面 */
+.flip-card {
+    width:220px;
+    height:220px;
+    margin:0 auto 20px;
+    perspective:1000px;
+    cursor:pointer;
+}
 
-        .g-lt {
-            top: 20px;
-            left: 20px;
-            width: 130px;
-            height: 130px;
-            background-image: url('images/jiafei_rb.png');
-            animation: float 3s infinite ease-in-out;
-        }
+.flip-inner {
+    width:100%;
+    height:100%;
+    transition:0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+}
 
-        .g-rt {
-            top: 20px;
-            right: 20px;
-            width: 140px;
-            height: 140px;
-            background-image: url('images/lashes_rb.png');
-            animation: float 4s infinite ease-in-out;
-        }
+.flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+}
 
-        .g-lb {
-            bottom: 20px;
-            left: 20px;
-            width: 150px;
-            height: 150px;
-            background-image: url('images/avocado_rb.png');
-            animation: float 5s infinite ease-in-out reverse;
-        }
+.profile-img {
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:8px solid #FFD700;
+    position:absolute;
+    object-fit:cover;
+    backface-visibility:hidden;
+}
 
-        body::after {
-            content: "";
-            background: url('images/jiafei.png') no-repeat;
-            background-size: contain;
-            width: 180px;
-            height: 180px;
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            z-index: 1001;
-            animation: rotate-float 4s infinite ease-in-out;
-            pointer-events: none;
-        }
+.back {
+    transform: rotateY(180deg);
+}
 
-        @keyframes float {
-            0%,100% { transform: translateY(0) rotate(5deg); }
-            50% { transform: translateY(-20px) rotate(-5deg) scale(1.1); }
-        }
+/* UI */
+.container { max-width:750px; margin:60px auto; }
+.y2k-frame {
+    background:rgba(255,255,255,0.6);
+    padding:40px;
+    border-radius:50px;
+    text-align:center;
+}
 
-        @keyframes rotate-float {
-            0%,100% { transform: rotate(-5deg); }
-            50% { transform: translateY(-30px) rotate(15deg); }
-        }
+h1 {
+    font-family:'Modak';
+    font-size:55px;
+    color:#FF00FF;
+}
 
-        .container {
-            max-width: 750px;
-            margin: 60px auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
+/* 卡片 */
+.card {
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:20px;
+}
 
-        .y2k-frame {
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(12px);
-            border: 10px dotted #FF00FF;
-            border-radius: 50px;
-            padding: 40px;
-            box-shadow: 0 0 50px rgba(255,0,255,0.4);
-            text-align: center;
-        }
-
-        .flip-card {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 20px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .flip-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card.flipped .flip-inner {
-            transform: rotateY(180deg);
-        }
-
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 8px solid #FFD700;
-            object-fit: cover;
-            box-shadow: 0 0 25px #FFD700;
-            position: absolute;
-            backface-visibility: hidden;
-        }
-
-        .back {
-            transform: rotateY(180deg);
-        }
-
-        h1 {
-            font-family: 'Modak', cursive;
-            font-size: 55px;
-            color: #FF00FF;
-            text-shadow: 4px 4px 0 #00FFFF;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.8);
-            border: 3px solid #333;
-            border-radius: 20px;
-            padding: 25px;
-            margin: 20px 0;
-            text-align: left;
-            box-shadow: 10px 10px 0 #333;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 15px;
-            border: 4px solid #FF00FF;
-            margin-top: 15px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .baddie-icon {
-            width: 45px;
-            height: 45px;
-            background: url('images/baddie.png') no-repeat center;
-            background-size: contain;
-        }
-
-        .bar-bg {
-            flex-grow: 1;
-            height: 25px;
-            background: #eee;
-            border-radius: 15px;
-            border: 2px solid #333;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg,#FF69B4,#FFD700);
-        }
-
-        .yes-btn {
-            display: block;
-            width: 220px;
-            height: 80px;
-            margin: 40px auto;
-            background: url('images/yes.png') no-repeat center;
-            background-size: contain;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+/* 影片 */
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+}
+.video-container iframe {
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+</style>
 </head>
+
 <body>
 
-<audio autoplay loop controls>
+<!-- 音樂 -->
+<audio id="bgm" autoplay loop muted controls>
     <source src="music/bgm.mp3" type="audio/mpeg">
 </audio>
 
-<div class="guardian g-lt"></div>
-<div class="guardian g-rt"></div>
-<div class="guardian g-lb"></div>
-
 <div class="container">
-    <div class="y2k-frame">
+<div class="y2k-frame">
 
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-inner">
-                <img src="images/1000022247.jpg" class="profile-img front" alt="front">
-                <img src="images/second.jpg" class="profile-img back" alt="back">
-            </div>
-        </div>
-
-        <h1>SERGEY FETISOV</h1>
-
-        <p>🌟 <b>學號:114054040 . 亞洲大學 一年級</b> 🌟</p>
-
-        <div class="card">
-            <h2>👑 皇室自介影片</h2>
-
-            <div class="video-container">
-                <iframe 
-                  src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc?rel=0"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>皇室簡介</h2>
-            <p>我是亞洲大學一年級學生(學號:114054040)不要問我在學什麼，問我有沒有被 Jiafei 祝福過。💅</p>
-        </div>
-
-        <div class="card">
-            <h2>核心神技</h2>
-
-            <div class="skill-item">
-                <div class="baddie-icon"></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
-                <span>精緻 100%</span>
-            </div>
-
-            <div class="skill-item">
-                <div class="baddie-icon"></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
-                <span>SLAY 95%</span>
-            </div>
-        </div>
-
-        <button class="yes-btn" onclick="alert('恭喜你，Flotropica 帝國正式錄取你！✨🖕')"></button>
-
-        <footer>© 2026 Designed by Sergey Fetisov.</footer>
-
+<!-- 翻面頭像 -->
+<div class="flip-card" id="flipCard">
+    <div class="flip-inner">
+        <img src="images/1000022247.jpg" class="profile-img">
+        <img src="images/second.jpg" class="profile-img back">
     </div>
 </div>
 
+<h1>SERGEY FETISOV</h1>
+
+<div class="card">
+<h2>👑 自介影片</h2>
+
+<div class="video-container">
+<iframe 
+src="https://www.youtube-nocookie.com/embed/z-MHgEJ7ZJc"
+frameborder="0"
+allowfullscreen>
+</iframe>
+</div>
+
+</div>
+
+</div>
+</div>
+
 <script>
-setInterval(() => {
-    const diamond = document.createElement('div');
-    diamond.innerText = '💎';
-    diamond.style.position = 'fixed';
-    diamond.style.left = Math.random() * window.innerWidth + 'px';
-    diamond.style.top = '-30px';
-    diamond.style.fontSize = '24px';
-    diamond.style.zIndex = '9999';
-    diamond.style.transition = 'transform 5s linear, opacity 5s linear';
+// 🔥 點擊解鎖音樂
+const audio = document.getElementById("bgm");
 
-    document.body.appendChild(diamond);
+document.addEventListener("click", () => {
+    audio.muted = false;
+    audio.play();
+}, { once:true });
 
-    requestAnimationFrame(() => {
-        diamond.style.transform = `translateY(${window.innerHeight + 50}px) rotate(360deg)`;
-        diamond.style.opacity = '0';
+
+// 🔥 頭像翻面
+document.getElementById("flipCard").onclick = function() {
+    this.classList.toggle("flipped");
+
+    // 同時啟動音樂
+    audio.muted = false;
+    audio.play();
+};
+
+
+// 💎 鑽石雨
+setInterval(()=>{
+    const d = document.createElement("div");
+    d.innerText="💎";
+    d.style.position="fixed";
+    d.style.left=Math.random()*window.innerWidth+"px";
+    d.style.top="-20px";
+    d.style.fontSize="24px";
+    d.style.transition="5s linear";
+    document.body.appendChild(d);
+
+    requestAnimationFrame(()=>{
+        d.style.transform=`translateY(${window.innerHeight}px) rotate(360deg)`;
+        d.style.opacity="0";
     });
 
-    setTimeout(() => diamond.remove(), 5000);
-}, 300);
+    setTimeout(()=>d.remove(),5000);
+},300);
+
 </script>
 
 </body>
